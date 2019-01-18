@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".TestFunctionsActivity"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Phone Number:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edPhone"
+            android:hint="01015434300"
+            android:inputType="phone"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="Message:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edMessage"
+            android:hint="message here"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp" />
+        <Button
+            android:id="@+id/btnSendSms"
+            android:text="SEND SMS"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+        <View
+            android:background="#9b9b9b"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            android:text="To:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edEmail"
+            android:hint="mahmoud@undecode.com"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Subject:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edSubject"
+            android:hint="Subject"
+            android:inputType="textEmailSubject"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="Message:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edMail"
+            android:hint="message here"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp" />
+        <Button
+            android:id="@+id/btnSendEmail"
+            android:text="SEND MAIL"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

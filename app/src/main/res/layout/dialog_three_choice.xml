@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rd1"
+            android:text="@string/sales_order"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <RadioButton
+            android:id="@+id/rd2"
+            android:layout_marginTop="10dp"
+            android:text="@string/collect_payment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <RadioButton
+            android:id="@+id/rd3"
+            android:layout_marginTop="10dp"
+            android:text="@string/unsuccessful"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </RadioGroup>
+
+</android.support.constraint.ConstraintLayout>

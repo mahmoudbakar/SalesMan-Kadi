@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_request_catalog"
+        android:icon="@drawable/ic_catalog"
+        app:showAsAction="always"
+        android:title="@string/request_catalog"/>
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search"
+        android:orderInCategory="100"
+        android:title="@string/search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/barcode"
+        android:icon="@drawable/ic_barcode"
+        android:orderInCategory="100"
+        android:title="@string/barcode"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/sync"
+        android:icon="@layout/icon_sync_counter"
+        android:orderInCategory="100"
+        android:title="@string/sync"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/language"
+        android:icon="@drawable/ic_language"
+        android:orderInCategory="100"
+        android:title="@string/language"
+        app:showAsAction="always" />
+</menu>

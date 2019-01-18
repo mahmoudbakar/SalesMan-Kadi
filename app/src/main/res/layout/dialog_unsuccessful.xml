@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textSize="17dp"
+        android:text="@string/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spReasons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textSize="17dp"
+        android:text="@string/note_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:padding="7dp"
+        android:id="@+id/edNote"
+        android:gravity="start"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="5dp"
+        android:textSize="17dp"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="110dp" />
+
+</LinearLayout>

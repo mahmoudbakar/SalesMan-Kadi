@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:padding="3dp"
+    android:background="@drawable/rounded_edit_text"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <TextView
+        android:textSize="17dp"
+        android:id="@+id/txtPriceUnit"
+        android:text="21.5$ for piece"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp" />
+    <ImageView
+        android:id="@+id/itemImage"
+        android:src="@drawable/broken"
+        android:scaleType="centerInside"
+        android:layout_above="@id/txtItemName"
+        android:layout_below="@id/txtPriceUnit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <TextView
+        android:textSize="19dp"
+        android:gravity="center"
+        android:id="@+id/txtItemName"
+        android:layout_alignParentBottom="true"
+        android:text="Door Viewer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
