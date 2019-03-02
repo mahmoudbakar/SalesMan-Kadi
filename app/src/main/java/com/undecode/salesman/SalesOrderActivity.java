@@ -31,6 +31,8 @@ import com.undecode.salesman.models.Customer;
 import com.undecode.salesman.models.Groups;
 import com.undecode.salesman.models.Item;
 import com.undecode.salesman.models.Reason;
+import com.undecode.salesman.models.local.OffersInvoicesItem;
+import com.undecode.salesman.models.local.OffersResponse;
 import com.undecode.salesman.models.local.Payment;
 import com.undecode.salesman.models.local.SalesOrder;
 import com.undecode.salesman.models.local.SalesOrderDtlsItem;
@@ -41,6 +43,7 @@ import com.undecode.salesman.utils.MyClicks;
 import com.undecode.salesman.utils.MyDate;
 import com.undecode.salesman.utils.MyFragmentManager;
 import com.undecode.salesman.utils.MyNumbers;
+import com.undecode.salesman.utils.MyPreferance;
 import com.undecode.salesman.utils.OnCategoryPressed;
 import com.undecode.salesman.utils.Sender;
 import com.undecode.salesman.utils.network.API;
@@ -93,6 +96,8 @@ public class SalesOrderActivity extends AppCompatActivity implements OnCategoryP
     Realm realm;
     Customer customer;
     Gson gson;
+    private MyPreferance preferance;
+    private OffersResponse offers;
     MyDate myDate;
     RealmResults<Customer> customers;
     SearchView searchView;
@@ -105,6 +110,9 @@ public class SalesOrderActivity extends AppCompatActivity implements OnCategoryP
         setContentView(R.layout.activity_sales_order);
         gson = new Gson();
         myDate = new MyDate();
+        preferance = new MyPreferance(this);
+        gson = new Gson();
+        offers = gson.fromJson(preferance.getOffers(), OffersResponse.class);
 
         realm = Realm.getDefaultInstance();
         customers = realm.where(Customer.class).equalTo("customerID", getIntent().getIntExtra("customer", 0)).findAll();
@@ -299,10 +307,22 @@ public class SalesOrderActivity extends AppCompatActivity implements OnCategoryP
         }
     }
 
-
     @OnClick(R.id.btnPay)
     public void onBtnPayClicked()
     {
+        if (offers.getOffersInvoices().size() > 0)
+        {
+            if (subTotal >= offers.getOffersInvoices().get(0).getTotalInvoice())
+            {
+                if (offers.getOffersInvoices().get(0).getDiscPercent() > 0)
+                {
+                    discount = ((subTotal / 100) * offers.getOffersInvoices().get(0).getDiscPercent());
+                }else if (offers.getOffersInvoices().get(0).getDiscValue() > 0)
+                {
+                    discount = ((subTotal / 100) * offers.getOffersInvoices().get(0).getDiscValue());
+                }
+            }
+        }
         new AlertDialog.Builder(this)
                 .setTitle(R.string.confirm)
                 .setMessage(getString(R.string.order_value_confirmation)+"\n"+String.valueOf(total)+" "+getString(R.string.le))
@@ -322,7 +342,7 @@ public class SalesOrderActivity extends AppCompatActivity implements OnCategoryP
                         SalesOrder salesOrder = new SalesOrder();
                         salesOrder.setCustomerName(customer.getCustomerNameE());
                         salesOrder.setCustomerID(customer.getCustomerID());
-                        salesOrder.setTotalValue(total);
+                        salesOrder.setTotalValue(total - discount);
                         salesOrder.setDiscountValue(discount);
                         salesOrder.setLatitude(31.55);
                         salesOrder.setLongitude(31.22);
@@ -442,7 +462,7 @@ public class SalesOrderActivity extends AppCompatActivity implements OnCategoryP
             subTotal = 0;
             Item temp = ((Item) o);
             Item item = new Item(temp.getSupplierID(), temp.getPrice2(), temp.getImg(), temp.getPrice1(), temp.getUnitID(), temp.getItemNameA(),
-                    temp.getItemID(),temp.getItemNameE(), temp.getGroupID(), 0, null);
+                    temp.getItemID(),temp.getItemNameE(), temp.getGroupID(), 0, null, this);
             if (selectedItems.size() > 0)
             {
                 for (int i = 0; i < selectedItems.size(); i++)

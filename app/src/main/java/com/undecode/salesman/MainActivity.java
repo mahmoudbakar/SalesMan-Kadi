@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity
         myFragmentManager.goToFragment(new CatalogFragment(), "CATALOG");
         API.getInstance().getCustomers(MainActivity.this, null);
         API.getInstance().getReasons(MainActivity.this, null);
+        API.getInstance().getOffers(MainActivity.this);
         API.getInstance().getGroups(MainActivity.this, new OnDataReady.ArrayReady()
         {
             @Override

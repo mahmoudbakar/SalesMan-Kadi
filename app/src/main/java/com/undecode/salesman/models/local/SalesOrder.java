@@ -54,7 +54,7 @@ public class SalesOrder extends RealmObject
 
 	public double getTotalValue()
 	{
-		return totalValue;
+		return totalValue - discountValue;
 	}
 
 	public void setId(int id)

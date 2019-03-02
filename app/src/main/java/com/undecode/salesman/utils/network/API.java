@@ -428,4 +428,29 @@ public class API
         }
     }
 
+    public void getOffers(final Context context)
+    {
+        bakarRequests.jsonObjectGetRequest(context, Constants.API.GET_OFFERS, new OnBakarResponse.JsonResponse()
+        {
+            @Override
+            public void onSuccess(JSONObject response)
+            {
+                MyPreferance preferance = new MyPreferance(context);
+                preferance.setOffers(response);
+            }
+
+            @Override
+            public void onSuccess(JSONArray response)
+            {
+
+            }
+
+            @Override
+            public void onError(VolleyError error)
+            {
+
+            }
+        }, true, context.getString(R.string.loading_customers));
+    }
+
 }

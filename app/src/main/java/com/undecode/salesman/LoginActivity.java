@@ -44,41 +44,44 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.btnLogin)
     public void onBtnLoginClicked()
     {
-        API.getInstance().login(this, edID.getText().toString(), edPassword.getText().toString(), new OnDataReady.ObjectReady()
+        if (edID.getText().toString().equals("aglan") && edPassword.getText().toString().equals("1"))
         {
-            @Override
-            public void onObjectReady(Object object)
+            API.getInstance().login(this, edID.getText().toString(), edPassword.getText().toString(), new OnDataReady.ObjectReady()
             {
-                if (object != null)
+                @Override
+                public void onObjectReady(Object object)
                 {
-                    try
+                    if (object != null)
                     {
-                        LoginResponse loginResponse = ((LoginResponse) object);
-                        if (!loginResponse.getAccessToken().equals(""))
+                        try
                         {
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else
+                            LoginResponse loginResponse = ((LoginResponse) object);
+                            if (!loginResponse.getAccessToken().equals(""))
+                            {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else
+                            {
+                                Toast.makeText(LoginActivity.this, getString(R.string.wrong_credentials), Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (ClassCastException e)
                         {
-                            Toast.makeText(LoginActivity.this, getString(R.string.wrong_credentials), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.check_internet), Toast.LENGTH_SHORT).show();
                         }
-                    }catch (ClassCastException e)
+                    }else
                     {
-                        Toast.makeText(LoginActivity.this, getString(R.string.check_internet), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.wrong_credentials), Toast.LENGTH_SHORT).show();
                     }
-                }else
-                {
-                    Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.wrong_credentials), Toast.LENGTH_SHORT).show();
                 }
-            }
 
-            @Override
-            public void onError(Object object)
-            {
+                @Override
+                public void onError(Object object)
+                {
 
-            }
-        }, true);
+                }
+            }, true);
+        }
     }
 
     @OnClick(R.id.txtForgotPassword)

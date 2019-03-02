@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.undecode.salesman.R;
 import com.undecode.salesman.models.Item;
+import com.undecode.salesman.models.local.OffersResponse;
 import com.undecode.salesman.utils.MyClicks;
 import com.undecode.salesman.utils.MyNumbers;
+import com.undecode.salesman.utils.MyPreferance;
 
 import java.util.List;
 
@@ -23,6 +26,9 @@ public class SelectedItemsAdapter extends RecyclerView.Adapter<SelectedItemsAdap
     private List<Item> itemList;
     private MyNumbers myNumbers;
     private MyClicks myClicks;
+    private MyPreferance preferance;
+    private Gson gson;
+    private OffersResponse offers;
 
     public SelectedItemsAdapter(Context context, List<Item> itemList, MyClicks myClicks)
     {
@@ -30,6 +36,9 @@ public class SelectedItemsAdapter extends RecyclerView.Adapter<SelectedItemsAdap
         this.context = context;
         this.itemList = itemList;
         this.myClicks = myClicks;
+        preferance = new MyPreferance(context);
+        gson = new Gson();
+        offers = gson.fromJson(preferance.getOffers(), OffersResponse.class);
     }
 
     public void setItemList(List<Item> itemList)

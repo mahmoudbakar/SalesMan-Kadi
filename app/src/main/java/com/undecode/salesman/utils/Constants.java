@@ -16,8 +16,9 @@ public interface Constants
         public static final String GET_REASONS = APIS +"GetReasons";
         public static final String SaveUnSuccessfulVisits = APIS +"SaveUnSuccessfulVisits";
         public static final String SavePayments = APIS +"SavePayments";
+        public static final String GET_OFFERS = APIS +"GetOffers";
         public static final String SaveSalesOrders = APIS +"SaveSalesOrders";
-        public static final String Login = LOCAL + "api/Account/LogIn";
+        public static final String Login = GLOBAL + "api/Account/LogIn";
     }
 
     public class OREDR_TYPE

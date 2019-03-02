@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 
 import com.undecode.salesman.models.LoginResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by mahmo on 4/9/2018.
  */
@@ -41,6 +44,17 @@ public class MyPreferance
     {
         editor.putString("lang", lang);
         editor.commit();
+    }
+
+    public void setOffers(JSONObject object)
+    {
+        editor.putString("offers", object.toString());
+        editor.commit();
+    }
+
+    public String getOffers()
+    {
+        return preferences.getString("offers", "{}");
     }
 
     public String getLang()
